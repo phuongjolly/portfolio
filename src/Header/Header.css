@@ -1,0 +1,112 @@
+.main-header {
+    padding: 50px 15px 50px 15px;
+    position: relative;
+
+}
+
+.header-logo {
+    font-size: 32px;
+    float: left;
+}
+
+.header-logo img {
+    width: 43px;
+    height: 38px;
+}
+
+.hello-message {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hello-message .hello {
+    margin-right: 10px;
+    color: #242321;
+}
+
+.hello-message .username {
+    margin-right: 10px;
+    color: #0d71bb;
+}
+
+.hello-message .login-button {
+    margin-right: 10px;
+}
+
+.hello-message a {
+    color: #666
+}
+
+.portfolio-container {
+    display: flex;
+    color: #242321;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.portfolio-title-holder {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+
+}
+
+.portfolio-title {
+    margin-top: 20px;
+    font-size: 26px;
+}
+
+.portfolio-content {
+    margin-top: 20px;
+    color: #666;
+    line-height: 26px;
+}
+
+.portfolio-menu {
+    display: flex;
+    flex-flow: row;
+    gap: 16px;
+}
+
+.portfolio-menu .item a {
+    color: #666;
+}
+
+.portfolio-menu .item a:hover {
+    color: #0d71bb;
+}
+
+@media (max-width: 620px) {
+    .portfolio-container {
+        flex-flow: column;
+        align-items: flex-start;
+    }
+    .portfolio-menu {
+        margin-top: 30px;
+        justify-content: flex-start;
+    }
+    .portfolio-menu .item {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+
+}
+
+@media (min-width: 830px) {
+
+    .portfolio-container {
+        flex-flow: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .portfolio-menu {
+        justify-content: flex-end;
+    }
+    .portfolio-menu .item {
+        font-size: 16px;
+    }
+}
