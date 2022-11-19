@@ -64,13 +64,18 @@ body {
 }
 
 .App a{
-  color: #898989;
+  color: #000;
   list-style: none;
   text-decoration: none;
 }
 
 .App a:hover {
   color: #0d71bb;
+}
+
+.App p {
+  color: #000;
+  line-height: 26px;
 }
 
 @media (max-width: 620px) {

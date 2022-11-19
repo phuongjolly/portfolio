@@ -15,21 +15,19 @@ export default function Header() {
         <Welcome />
       </div>
       <div className="portfolio-container">
-        <div className="portfolio-title-holder">
-          <div className="portfolio-title">Portfolio</div>
-          <div className="portfolio-content">
-            My all projects will be presented here
-          </div>
-        </div>
-        <div className="portfolio-menu">
-          <div className="item">
-            <Link to="/">Home</Link>
-          </div>
-          <div className="item">
-            <Link to="/projects">Showcase</Link>
-          </div>
-          <div className="item">
-            <Link to="/about-me">About Me</Link>
+        <div className="portfolio-title">Portfolio</div>
+        <div className="portfolio-content">
+          <p>My all projects will be presented here</p>
+          <div className="portfolio-menu">
+            <div className="item">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="item">
+              <Link to="/projects">Showcase</Link>
+            </div>
+            <div className="item">
+              <Link to="/about-me">About Me</Link>
+            </div>
           </div>
         </div>
       </div>
