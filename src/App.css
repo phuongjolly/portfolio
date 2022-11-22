@@ -78,6 +78,7 @@ body {
   line-height: 26px;
 }
 
+
 @media (max-width: 620px) {
   .App {
     padding: 5px;

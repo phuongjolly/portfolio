@@ -9,7 +9,7 @@ export default function Footer() {
         <a href="https://www.facebook.com">Google+</a>
         <a href="https://www.facebook.com">Email</a>
       </div>
-      <div className="copyright">© Copyright 2018. All Rights Reserved.</div>
+      <div className="copyright">© Copyright 2022. All Rights Reserved.</div>
     </div>
   );
 }
