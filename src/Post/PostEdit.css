@@ -1,0 +1,23 @@
+.post-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-title {
+    margin-bottom: 10px;
+}
+
+.post-title input {
+    width: 100%;
+    padding: 8px;
+}
+
+.post-description {
+    margin-bottom: 10px;
+}
+
+.post-description  input {
+    width: 100%;
+    padding: 8px;
+}

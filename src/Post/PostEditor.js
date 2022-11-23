@@ -13,7 +13,7 @@ export default function PostEditor() {
   };
 
   return (
-    <div className={"post-editor"}>
+    <>
       <Editor
         ref={editorRef}
         apiKey="9c7p72hz4olsnke82uaqvgdj64yya4zzv138ub7j6tn7itve"
@@ -54,20 +54,6 @@ export default function PostEditor() {
           images_upload_handler: imageUploadHandler,
         }}
       />
-      <div className="save-button">
-        <button className="ui button" onClick={() => this.onDiscardClick()}>
-          Discard
-        </button>
-        <div className="or" />
-        <button
-          className="ui positive button"
-          onClick={() =>
-            this.props.savePost(this.state.newTag, this.props.post.avatarUrl)
-          }
-        >
-          Save
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
