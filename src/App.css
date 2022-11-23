@@ -73,11 +73,6 @@ body {
   color: #0d71bb;
 }
 
-.App p {
-  color: #000;
-  line-height: 26px;
-}
-
 
 @media (max-width: 620px) {
   .App {

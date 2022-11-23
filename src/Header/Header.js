@@ -20,10 +20,7 @@ export default function Header() {
           <p>My all projects will be presented here</p>
           <div className="portfolio-menu">
             <div className="item">
-              <Link to="/">Home</Link>
-            </div>
-            <div className="item">
-              <Link to="/projects">Showcase</Link>
+              <Link to="/">Showcase</Link>
             </div>
             <div className="item">
               <Link to="/about-me">About Me</Link>

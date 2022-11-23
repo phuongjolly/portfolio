@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Post.css";
 
 export default function Post() {
   //const { data } =  useSWR("");
@@ -8,6 +9,12 @@ export default function Post() {
       "https://dr9wvh6oz7mzp.cloudfront.net/i/c6800d9fa1e70422cf2519bcecc546a5_ra,w380,h380_pa,w380,h380.jpg",
     title: "Hello world!",
     description: "Hello world to every one",
+    content:
+      "Hello world to every one Hello world to every one Hello world to every one Hello" +
+      "world to every one Hello world to every oneHello world to every one Hello world to every one Hello world to" +
+      "every one Hello world to every one Hello world to every one Hello world to Hello world" +
+      "to every one Hello world to every one Hello world to every oneHello world" +
+      "to every one every one Hello world to every one",
     tags: [
       {
         id: 0,
@@ -29,20 +36,17 @@ export default function Post() {
       </div>
       {data && (
         <>
-          <div className="post-title">
-            <h1>{data.title}</h1>
+          <h1 className="mb-5 flex flex-row justify-center text-2xl">
+            {data.title}
+          </h1>
+          <p className="mb-5 flex flex-row justify-center text-gray-500">
+            {data.description}
+          </p>
+          <div className={"mb-5 flex flex-col"}>
+            <p>{data.content}</p>
           </div>
-          <div className="post-description">
-            <p>{data.description}</p>
-          </div>
-          <div className="editor">
-            <div className="DraftEditor-root">
-              <div className="DraftEditor-editorContainer">
-                {"hello world from post"}
-              </div>
-            </div>
-          </div>
-          <div className="tag">
+          <div className="flex flex-row gap-4 items-center mt-4">
+            <label>Tags: </label>
             {data.tags.map((tag) => (
               <div key={tag.id}>
                 <Link to={`/posts/tags/${tag.name}`}>
@@ -53,14 +57,9 @@ export default function Post() {
           </div>
         </>
       )}
-      <div className="navigation">
-        <div className="previous">Previous Page</div>
-        <div>
-          <i className="th large icon" />
-        </div>
-        <div className="next">
-          <a href="https://www.facebook.com">Next Page</a>
-        </div>
+      <div className="flex justify-between w-full mt-4">
+        <a className="hover:cursor-pointer">Previous Page</a>
+        <a className="hover:cursor-pointer">Next Page</a>
       </div>
     </div>
   );

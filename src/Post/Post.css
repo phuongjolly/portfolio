@@ -1,0 +1,51 @@
+.post{
+    display: flex;
+    flex-flow: column;
+    word-wrap: break-word;
+}
+
+.post .post-content{
+    color: #666;
+    padding: 15px;
+    font-weight: 400;
+}
+
+.post .navigation {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-family: 'Questrial';
+    font-weight: 400;
+    margin: 60px 0 10px 0;
+}
+
+.post .navigation .previous {
+    color: #898989;
+    cursor: pointer;
+}
+
+.post .navigation .next {
+    color: #242321;
+    cursor: pointer;
+}
+
+.post .post-comments {
+    margin-top: 40px;
+    padding: 15px;
+}
+
+.post .post-comments .ui.comments {
+    max-width: 100%;
+}
+.post .login-button {
+    margin-top: 20px;
+}
+
+.post .tag {
+    display: flex;
+    flex-flow: row;
+}
+
+.post .tag .item {
+    color: red;
+}
