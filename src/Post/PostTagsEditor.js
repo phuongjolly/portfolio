@@ -16,7 +16,7 @@ export default function PostTagsEditor({ tags, onChange }) {
         className="flex flex-row gap-2 justify-start"
         onSubmit={(e) => onSubmit(e)}
       >
-        {tags.length > 0 && tags.map((tag) => <button>{tag}</button>)}
+        {tags.length > 0 && tags.map((tag) => <button key={tag}>{tag}</button>)}
         <input
           className={"p-2"}
           type="text"

@@ -27,3 +27,11 @@ export default async function s3Uploader(file, key, contentType) {
   await client.send(putRequest);
   return `https://${awsAuth.bucket}.s3.amazonaws.com/${key}`;
 }
+
+export async function readFile(file, setData) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    setData({ name: file.name, type: file.type, url: reader.result });
+  };
+}
