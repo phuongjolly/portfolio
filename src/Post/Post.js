@@ -1,34 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Post.css";
+import useSWR from "swr";
 
 export default function Post() {
-  //const { data } =  useSWR("");
-  const data = {
-    id: 0,
-    avatarUrl:
-      "https://dr9wvh6oz7mzp.cloudfront.net/i/c6800d9fa1e70422cf2519bcecc546a5_ra,w380,h380_pa,w380,h380.jpg",
-    title: "Hello world!",
-    description: "Hello world to every one",
-    content:
-      "Hello world to every one Hello world to every one Hello world to every one Hello" +
-      "world to every one Hello world to every oneHello world to every one Hello world to every one Hello world to" +
-      "every one Hello world to every one Hello world to every one Hello world to Hello world" +
-      "to every one Hello world to every one Hello world to every oneHello world" +
-      "to every one every one Hello world to every one",
-    tags: [
-      {
-        id: 0,
-        name: "c++",
-      },
-      { id: 1, name: "nodejs" },
-    ],
-  };
+  const { id } = useParams();
+  const { data } = useSWR(`/posts/${id}`, { suspense: true });
 
   return (
     <div className="post">
       <div className="post-button">
         <button className="ui button">
-          <Link to={`/posts/${data.id}/edit`}>Edit</Link>
+          <Link to={`/posts/${data._id}/edit`}>Edit</Link>
         </button>
         <button className="ui button" onClick={() => {}}>
           Delete
@@ -47,13 +29,14 @@ export default function Post() {
           </div>
           <div className="flex flex-row gap-4 items-center mt-4">
             <label>Tags: </label>
-            {data.tags.map((tag) => (
-              <div key={tag.id}>
-                <Link to={`/posts/tags/${tag.name}`}>
-                  <div className="item">#{tag.name}</div>
-                </Link>
-              </div>
-            ))}
+            {data.tags &&
+              data.tags.map((tag) => (
+                <div key={tag.id}>
+                  <Link to={`/posts/tags/${tag.name}`}>
+                    <div className="item">#{tag.name}</div>
+                  </Link>
+                </div>
+              ))}
           </div>
         </>
       )}

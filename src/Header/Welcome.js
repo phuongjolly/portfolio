@@ -17,7 +17,8 @@ export default function Welcome() {
   }
 
   return (
-    <div className="hello-message">
+    <div className="hello-message flex flex-row justify-between gap-2">
+      <p>Admin?</p>
       <Link
         to={{
           pathname: "/user/login",
@@ -25,9 +26,6 @@ export default function Welcome() {
         className="ui link login-button"
       >
         Login
-      </Link>
-      <Link to="/user/register" className="ui link register-button">
-        Register
       </Link>
     </div>
   );
