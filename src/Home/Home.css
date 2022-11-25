@@ -2,6 +2,9 @@
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .page-container .item-box {
@@ -9,12 +12,13 @@
     flex-flow: column;
     font-family: 'Montserrat', sans-serif;
     color: #666;
-    align-items: flex-start;
+    align-items: center;
     padding: 15px;
     opacity: 0;
     animation: fadeInUp 1.5s 1;
     animation-fill-mode: forwards;
     border: 1px solid #ededed;
+    width: 32%;
 }
 
 @keyframes fadeInUp {

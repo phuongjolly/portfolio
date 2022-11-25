@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/posts/:id/edit",
-        element: <PostEdit errorElement={<ErrorBoundary />} />,
+        element: <PostEdit />,
       },
     ],
   },

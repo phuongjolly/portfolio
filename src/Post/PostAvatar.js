@@ -1,14 +1,15 @@
 import "./PostAvatar.css";
-import { useRef, useState } from "react";
-import { readFile } from "../common/UploadImage";
+import { useMemo, useRef, useState } from "react";
+import s3Uploader, { readFile } from "../common/UploadImage";
 
 const defaultAvatarURL =
   "https://phuongjolly-portfolio.s3.amazonaws.com/default-avatar.jpg";
-export default function PostAvatar({ url }) {
+export default function PostAvatar({ url, handler }) {
   const [fileData, setFileData] = useState({
     name: "",
     type: "",
     url: url || defaultAvatarURL,
+    data: null,
   });
 
   const fileInput = useRef();
@@ -31,6 +32,16 @@ export default function PostAvatar({ url }) {
       await readFile(droppedFile, setFileData);
     }
   };
+
+  useMemo(async () => {
+    const response = await s3Uploader(
+      fileData.data,
+      fileData.name,
+      fileData.type
+    );
+
+    handler(response);
+  }, [fileData.url]);
 
   return (
     <form

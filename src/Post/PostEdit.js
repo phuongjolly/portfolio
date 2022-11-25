@@ -1,24 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostEditor from "./PostEditor";
-import PostTagsEditor from "./PostTagsEditor";
 import PostAvatar from "./PostAvatar";
 import "./PostEdit.css";
 import { Button } from "flowbite-react";
+import { useParams, useNavigate } from "react-router-dom";
+import useSWR from "swr";
 
 export default function PostEdit() {
-  const [post, setPost] = useState({
-    id: 0,
-    title: "",
-    description: "",
-    avatar: "",
-    images: [],
-    content: "",
-    tags: ["welcome", "be good"],
+  const navigate = useNavigate();
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const { id } = useParams();
+  const { data } = useSWR(`/posts/${id}`, {
+    suspense: true,
   });
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    setPost(data);
+  }, [data]);
 
   const onChange = (value, type) => {
     setPost({ ...post, [type]: value });
   };
+
+  const onSave = async () => {
+    console.log("before save", post);
+    const response = await fetch(`/posts/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(post),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response) {
+      navigate("/");
+    } else {
+      setShowErrorDialog(true);
+    }
+  };
+
+  const onDiscard = () => {
+    setPost(data);
+  };
+
+  if (!post) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className="post-edit">
@@ -38,17 +66,20 @@ export default function PostEdit() {
           value={post.description}
         />
       </div>
-      <PostAvatar url={null} />
-      <PostEditor />
-      <PostTagsEditor
-        tags={post.tags}
-        onChange={(value) => onChange(value, "tags")}
+      <PostAvatar
+        url={post.avatar}
+        handler={(value) => onChange(value, "avatar")}
+      />
+      <PostEditor
+        content={post.content}
+        onChangeHandler={(value) => onChange(value, "content")}
+        imageHandler={(value) => onChange([...post.images, value], "images")}
       />
       <div className="flex flex-row justify-center gap-4">
-        <Button color="light" onClick={() => {}}>
+        <Button color="light" onClick={onDiscard}>
           Discard
         </Button>
-        <Button onClick={() => {}}>Save</Button>
+        <Button onClick={onSave}>Save</Button>
       </div>
     </div>
   );

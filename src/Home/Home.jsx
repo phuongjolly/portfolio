@@ -11,7 +11,7 @@ export default function Home() {
         <div className="item-box" key={post._id}>
           <div className="photo">
             <Link to={`/posts/${post._id}`}>
-              <img src={post.avatarUrl} alt="myBlog" />
+              <img className={"w-full"} src={post.avatar} alt="myBlog" />
             </Link>
           </div>
           <div className="info-content">

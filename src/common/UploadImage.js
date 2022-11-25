@@ -32,6 +32,11 @@ export async function readFile(file, setData) {
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = function () {
-    setData({ name: file.name, type: file.type, url: reader.result });
+    setData({
+      name: file.name,
+      type: file.type,
+      url: reader.result,
+      data: file,
+    });
   };
 }
