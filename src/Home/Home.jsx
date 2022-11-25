@@ -9,11 +9,10 @@ export default function Home() {
     <div className={"page-container"}>
       {data.map((post) => (
         <div className="item-box" key={post._id}>
-          <div className="photo">
-            <Link to={`/posts/${post._id}`}>
-              <img className={"w-full"} src={post.avatar} alt="myBlog" />
-            </Link>
-          </div>
+          <Link to={`/posts/${post._id}`}>
+            <img className={"w-full"} src={post.avatar} alt="myBlog" />
+          </Link>
+
           <div className="info-content">
             <div className="info-header">{post.title}</div>
             <div className="info-detail">{post.description}</div>

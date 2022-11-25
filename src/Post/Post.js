@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import "./Post.css";
 import useSWR from "swr";
+import parse from "html-react-parser";
+import "./Post.css";
 
 export default function Post() {
   const { id } = useParams();
@@ -24,9 +25,7 @@ export default function Post() {
           <p className="mb-5 flex flex-row justify-center text-gray-500">
             {data.description}
           </p>
-          <div className={"mb-5 flex flex-col"}>
-            <p>{data.content}</p>
-          </div>
+          <div className={"mb-5 flex flex-col"}>{parse(data.content)}</div>
           <div className="flex flex-row gap-4 items-center mt-4">
             <label>Tags: </label>
             {data.tags &&
