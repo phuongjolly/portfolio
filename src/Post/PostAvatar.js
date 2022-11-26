@@ -1,5 +1,5 @@
 import "./PostAvatar.css";
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import s3Uploader, { readFile } from "../common/UploadImage";
 
 const defaultAvatarURL =
@@ -19,6 +19,14 @@ export default function PostAvatar({ url, handler }) {
     const target = e.target;
     if (target.files && target.files.length > 0) {
       await readFile(target.files[0], setFileData);
+
+      const response = await s3Uploader(
+        target.files[0],
+        target.files[0].name,
+        target.files[0].type
+      );
+
+      handler(response);
     }
   };
 
@@ -30,18 +38,16 @@ export default function PostAvatar({ url, handler }) {
       const droppedFile = dataTransfer.files[0];
       fileInput.current.files = dataTransfer.files;
       await readFile(droppedFile, setFileData);
+
+      const response = await s3Uploader(
+        droppedFile,
+        droppedFile.name,
+        droppedFile.type
+      );
+
+      handler(response);
     }
   };
-
-  useMemo(async () => {
-    const response = await s3Uploader(
-      fileData.data,
-      fileData.name,
-      fileData.type
-    );
-
-    handler(response);
-  }, [fileData.url]);
 
   return (
     <form

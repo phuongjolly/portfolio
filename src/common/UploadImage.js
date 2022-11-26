@@ -9,22 +9,28 @@ const awsAuth = {
 };
 
 export default async function s3Uploader(file, key, contentType) {
-  const client = new S3Client({
-    region: awsAuth.region,
-    credentials: {
-      accessKeyId: awsAuth.accessKeyId,
-      secretAccessKey: awsAuth.secretAccessKey,
-    },
-  });
+  try {
+    const client = new S3Client({
+      region: awsAuth.region,
+      credentials: {
+        accessKeyId: awsAuth.accessKeyId,
+        secretAccessKey: awsAuth.secretAccessKey,
+      },
+    });
 
-  const putRequest = new PutObjectCommand({
-    Body: file,
-    Bucket: awsAuth.bucket,
-    Key: key,
-    ContentType: contentType,
-    ACL: "public-read",
-  });
-  await client.send(putRequest);
+    const putRequest = new PutObjectCommand({
+      Body: file,
+      Bucket: awsAuth.bucket,
+      Key: key,
+      ContentType: contentType,
+      ACL: "public-read",
+    });
+    await client.send(putRequest);
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+
   return `https://${awsAuth.bucket}.s3.amazonaws.com/${key}`;
 }
 

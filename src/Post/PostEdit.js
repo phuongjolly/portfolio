@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PostEditor from "./PostEditor";
 import PostAvatar from "./PostAvatar";
 import "./PostEdit.css";
@@ -12,12 +12,14 @@ export default function PostEdit() {
   const { id } = useParams();
   const { data } = useSWR(`/posts/${id}`, {
     suspense: true,
+    revalidateOnFocus: false,
   });
+  console.log("LOading post", data);
   const [post, setPost] = useState(null);
 
   useEffect(() => {
     setPost(data);
-  }, [data]);
+  }, []);
 
   const onChange = (value, type) => {
     setPost({ ...post, [type]: value });
@@ -73,7 +75,6 @@ export default function PostEdit() {
       <PostEditor
         content={post.content}
         onChangeHandler={(value) => onChange(value, "content")}
-        imageHandler={(value) => onChange([...post.images, value], "images")}
       />
       <div className="flex flex-row justify-center gap-4">
         <Button color="light" onClick={onDiscard}>

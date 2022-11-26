@@ -3,14 +3,13 @@ import { useRef } from "react";
 import "./PostEditor.css";
 import s3Uploader from "../common/UploadImage";
 
-export default function PostEditor({ content, imageHandler, onChangeHandler }) {
+export default function PostEditor({ content, onChangeHandler }) {
   const editorRef = useRef();
 
   const imageUploadHandler = async (blobInfo) => {
     const file = blobInfo.blob();
     const key = blobInfo.filename();
-    const url = await s3Uploader(file, key, file.type);
-    imageHandler(url);
+    return await s3Uploader(file, key, file.type);
   };
 
   return (
@@ -22,7 +21,6 @@ export default function PostEditor({ content, imageHandler, onChangeHandler }) {
           onChangeHandler(newValue);
         }}
         onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue={content}
         value={content}
         init={{
           height: 500,
