@@ -3,7 +3,6 @@
     margin: 10px 10px 0 0;
     width: calc(1/3*100% - (1 - 1/3)*10px);
     padding: 10px;
-    color: #fff;
     background: #fff;
 }
 
