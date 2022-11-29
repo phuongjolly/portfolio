@@ -11,7 +11,7 @@ export default function Post() {
     <div className="post">
       <div className="post-button">
         <button className="ui button">
-          <Link to={`/posts/${data._id}/edit`}>Edit</Link>
+          <Link to={`/showcase/${data._id}/edit`}>Edit</Link>
         </button>
         <button className="ui button" onClick={() => {}}>
           Delete
@@ -31,7 +31,7 @@ export default function Post() {
             {data.tags &&
               data.tags.map((tag) => (
                 <div key={tag.id}>
-                  <Link to={`/posts/tags/${tag.name}`}>
+                  <Link to={`/showcase/tags/${tag.name}`}>
                     <div className="item">#{tag.name}</div>
                   </Link>
                 </div>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import PostEditor from "./PostEditor";
 import PostAvatar from "./PostAvatar";
 import "./PostEdit.css";
@@ -14,7 +14,7 @@ export default function PostEdit() {
     suspense: true,
     revalidateOnFocus: false,
   });
-  console.log("LOading post", data);
+
   const [post, setPost] = useState(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function PostEdit() {
     });
 
     if (response) {
-      navigate("/");
+      navigate(`/showcase/${id}`);
     } else {
       setShowErrorDialog(true);
     }

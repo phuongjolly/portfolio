@@ -1,7 +1,11 @@
-.main-header {
-    padding: 50px 15px 50px 15px;
+.header {
+    padding: 32px 56px;
     position: relative;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F4F0F1;
 }
 
 .header-logo {
@@ -13,6 +17,11 @@
     width: 43px;
     height: 38px;
 }
+
+.header a:hover {
+    color: rgb(216, 81, 64);
+}
+
 
 .hello-message {
     display: flex;

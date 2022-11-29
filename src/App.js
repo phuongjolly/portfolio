@@ -7,6 +7,7 @@ import Root from "./Root";
 import Post from "./Post/Post";
 import PostEdit from "./Post/PostEdit";
 import ErrorBoundary from "./common/ErrorBoundary";
+import Showcase from "./Showcase/Showcase";
 
 const router = createBrowserRouter([
   {
@@ -14,20 +15,18 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorBoundary />,
     children: [
-      {
-        path: "",
-        element: <Home />,
-      },
+      { path: "", element: <Home /> },
+      { path: "/showcase", element: <Showcase /> },
       {
         path: "/about-me",
         element: <AboutMe />,
       },
       {
-        path: "/posts/:id",
+        path: "/showcase/:id",
         element: <Post />,
       },
       {
-        path: "/posts/:id/edit",
+        path: "/showcase/:id/edit",
         element: <PostEdit />,
       },
     ],
