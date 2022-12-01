@@ -31,5 +31,9 @@
 }
 
 .latest-posts .item-box {
-    width: 48%;
+    width: 30%;
+}
+
+.latest-posts .item-box img {
+    height: 150px;
 }

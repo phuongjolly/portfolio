@@ -8,6 +8,7 @@ import Post from "./Post/Post";
 import PostEdit from "./Post/PostEdit";
 import ErrorBoundary from "./common/ErrorBoundary";
 import Showcase from "./Showcase/Showcase";
+import Login from "./Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/showcase/:id/edit",
         element: <PostEdit />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
