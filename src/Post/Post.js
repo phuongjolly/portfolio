@@ -5,7 +5,7 @@ import "./Post.css";
 
 export default function Post() {
   const { id } = useParams();
-  const { data } = useSWR(`/posts/${id}`, { suspense: true });
+  const { data } = useSWR(`/api/posts/${id}`, { suspense: true });
 
   return (
     <div className="post">

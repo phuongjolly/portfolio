@@ -1,15 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Button, Label, TextInput, Checkbox } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import useSWR from "swr";
 
 export default function Login() {
-  const currentUser = useState(null);
   const [show, setShow] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
 
   const onClose = () => {
     setShow(false);
     navigate("/");
+  };
+
+  const onLogin = async () => {
+    const currentUser = await fetch("/api/users/login", {
+      method: "POST",
+      body: JSON.stringify({ username: email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("current user", currentUser);
+
+    if (currentUser) {
+      navigate("/");
+    }
   };
 
   return (
@@ -28,13 +46,21 @@ export default function Login() {
               id="email"
               placeholder="name@company.com"
               required={true}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password" value="Your password" />
             </div>
-            <TextInput id="password" type="password" required={true} />
+            <TextInput
+              id="password"
+              type="password"
+              required={true}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
@@ -49,7 +75,7 @@ export default function Login() {
             </a>
           </div>
           <div className="w-full">
-            <Button>Log in to your account</Button>
+            <Button onClick={() => onLogin()}>Log in to your account</Button>
           </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}

@@ -4,7 +4,7 @@ import WrapList from "../common/WrapList";
 import ItemBox from "../common/ItemBox";
 
 export default function Showcase() {
-  const { data } = useSWR("/posts", { suspense: true });
+  const { data } = useSWR("/api/posts", { suspense: true });
 
   return (
     <WrapList className={"page-container"}>
