@@ -1,6 +1,7 @@
 import "./App.css";
-import { Suspense } from "react";
+import { createContext, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import useSWR from "swr";
 import Home from "./Home/Home";
 import AboutMe from "./AboutMe/AboutMe";
 import Root from "./Root";
@@ -9,6 +10,7 @@ import PostEdit from "./Post/PostEdit";
 import ErrorBoundary from "./common/ErrorBoundary";
 import Showcase from "./Showcase/Showcase";
 import Login from "./Login/Login";
+import { UserContext } from "./UserContext";
 
 const router = createBrowserRouter([
   {
@@ -39,9 +41,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const { data } = useSWR("/api/me", { suspense: true });
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <RouterProvider router={router} />
+      <UserContext.Provider value={data.currentUser}>
+        <RouterProvider router={router} />
+      </UserContext.Provider>
     </Suspense>
   );
 }

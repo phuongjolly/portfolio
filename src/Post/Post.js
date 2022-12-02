@@ -2,21 +2,25 @@ import { Link, useParams } from "react-router-dom";
 import useSWR from "swr";
 import parse from "html-react-parser";
 import "./Post.css";
+import { useCurrentUser } from "../UserContext";
 
 export default function Post() {
   const { id } = useParams();
   const { data } = useSWR(`/api/posts/${id}`, { suspense: true });
+  const currentUser = useCurrentUser();
 
   return (
     <div className="post">
-      <div className="post-button">
-        <button className="ui button">
-          <Link to={`/showcase/${data._id}/edit`}>Edit</Link>
-        </button>
-        <button className="ui button" onClick={() => {}}>
-          Delete
-        </button>
-      </div>
+      {currentUser && (
+        <div className="post-button">
+          <button className="ui button">
+            <Link to={`/showcase/${data._id}/edit`}>Edit</Link>
+          </button>
+          <button className="ui button" onClick={() => {}}>
+            Delete
+          </button>
+        </div>
+      )}
       {data && (
         <>
           <h1 className="mb-5 flex flex-row justify-center text-2xl">
