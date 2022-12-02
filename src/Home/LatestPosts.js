@@ -38,7 +38,7 @@ export default function LatestPosts() {
           {group.map((item, id) => (
             <div
               key={`item${id}`}
-              className={"flex flex-row justify-between gap-4 p-5"}
+              className={"wrap-list flex flex-row justify-between gap-4 p-5"}
             >
               {item.map((element) => (
                 <ItemBox

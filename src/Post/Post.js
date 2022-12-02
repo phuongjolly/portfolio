@@ -1,26 +1,30 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 import parse from "html-react-parser";
 import "./Post.css";
 import { useCurrentUser } from "../UserContext";
+import PostButtonControl from "./PostButtonControl";
 
 export default function Post() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useSWR(`/api/posts/${id}`, { suspense: true });
   const currentUser = useCurrentUser();
 
+  const onDelete = async () => {
+    const response = await fetch(`/api/posts/${id}`, { method: "DELETE" });
+    if (response) {
+      navigate("/showcase");
+    }
+  };
+
   return (
     <div className="post">
-      {currentUser && (
-        <div className="post-button">
-          <button className="ui button">
-            <Link to={`/showcase/${data._id}/edit`}>Edit</Link>
-          </button>
-          <button className="ui button" onClick={() => {}}>
-            Delete
-          </button>
-        </div>
-      )}
+      <PostButtonControl
+        show={currentUser !== null}
+        id={data._id}
+        onDelete={onDelete}
+      />
       {data && (
         <>
           <div
