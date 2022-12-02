@@ -24,3 +24,10 @@ jobs:
       with:
         push: true
         tags: phuongjolly/portfolio:latest
+    - name: Docker-compose up
+      uses: Flaavius/ssh-commands@1.0
+      with:
+        command: cd ~/app && docker-compose pull && docker-compose up -d
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.SSH_PASSWORD }}
