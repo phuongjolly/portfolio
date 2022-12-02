@@ -36,8 +36,8 @@ export default function PostEdit() {
 
   const onSave = async () => {
     let info = {
-      url: type === "edit" ? `/api/posts/${id}` : `/api/posts`,
-      method: type === "edit" ? "PUT" : "POST",
+      url: type === "add" ? `/api/posts` : `/api/posts/${id}`,
+      method: type === "add" ? "POST" : "PUT",
     };
 
     const response = await fetch(info.url, {
