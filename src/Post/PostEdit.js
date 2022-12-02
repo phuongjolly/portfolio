@@ -10,7 +10,7 @@ export default function PostEdit() {
   const navigate = useNavigate();
   const [showErrorDialog, setShowErrorDialog] = useState(false);
   const { id } = useParams();
-  const { data } = useSWR(`/posts/${id}`, {
+  const { data } = useSWR(`/api/posts/${id}`, {
     suspense: true,
     revalidateOnFocus: false,
   });
@@ -27,7 +27,7 @@ export default function PostEdit() {
 
   const onSave = async () => {
     console.log("before save", post);
-    const response = await fetch(`/posts/${id}`, {
+    const response = await fetch(`/api/posts/${id}`, {
       method: "PUT",
       body: JSON.stringify(post),
       headers: {
