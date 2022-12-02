@@ -23,23 +23,39 @@ export default function Post() {
       )}
       {data && (
         <>
-          <h1 className="mb-5 flex flex-row justify-center text-2xl">
-            {data.title}
-          </h1>
-          <p className="mb-5 flex flex-row justify-center text-gray-500">
-            {data.description}
-          </p>
-          <div className={"mb-5 flex flex-col"}>{parse(data.content)}</div>
-          <div className="flex flex-row gap-4 items-center mt-4">
-            <label>Tags: </label>
-            {data.tags &&
-              data.tags.map((tag) => (
-                <div key={tag.id}>
-                  <Link to={`/showcase/tags/${tag.name}`}>
-                    <div className="item">#{tag.name}</div>
-                  </Link>
-                </div>
-              ))}
+          <div
+            className={
+              "flex flex-col items-center justify-end relative h-80 max-h-80"
+            }
+            style={{
+              backgroundImage: `url(${data.avatar})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+            }}
+          >
+            &nbsp;
+          </div>
+          <div className={"flex flex-col p-5"}>
+            <h1 className="mb-5 flex flex-row justify-center text-2xl">
+              {data.title}
+            </h1>
+            <p className="mb-5 flex flex-row justify-center text-gray-500">
+              {data.description}
+            </p>
+          </div>
+          <div className={"py-10 px-32"}>
+            <div className={"mb-5 flex flex-col"}>{parse(data.content)}</div>
+            <div className="flex flex-row gap-4 items-center mt-4">
+              <label>Tags: </label>
+              {data.tags &&
+                data.tags.map((tag) => (
+                  <div key={tag.id}>
+                    <Link to={`/showcase/tags/${tag.name}`}>
+                      <div className="item">#{tag.name}</div>
+                    </Link>
+                  </div>
+                ))}
+            </div>
           </div>
         </>
       )}
