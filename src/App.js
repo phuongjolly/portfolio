@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         element: <Post />,
       },
       {
+        path: "/showcase/add",
+        element: <PostEdit />,
+      },
+      {
         path: "/showcase/:id/edit",
         element: <PostEdit />,
       },

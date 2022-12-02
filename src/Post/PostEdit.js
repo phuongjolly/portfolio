@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
+import { Button } from "flowbite-react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import useSWR from "swr";
 import PostEditor from "./PostEditor";
 import PostAvatar from "./PostAvatar";
 import "./PostEdit.css";
-import { Button } from "flowbite-react";
-import { useParams, useNavigate } from "react-router-dom";
-import useSWR from "swr";
 
 export default function PostEdit() {
   const navigate = useNavigate();
   const [showErrorDialog, setShowErrorDialog] = useState(false);
   const { id } = useParams();
-  const { data } = useSWR(`/api/posts/${id}`, {
+  const { pathname } = useLocation();
+  const type = pathname.split("/")[2];
+  const { data } = useSWR(type === "edit" ? `/api/posts/${id}` : null, {
     suspense: true,
     revalidateOnFocus: false,
   });
 
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState({
+    title: "",
+    description: "",
+    avatar: "",
+    content: "",
+  });
 
   useEffect(() => {
-    setPost(data);
+    if (type === "edit") {
+      setPost(data);
+    }
   }, []);
 
   const onChange = (value, type) => {
@@ -26,17 +35,23 @@ export default function PostEdit() {
   };
 
   const onSave = async () => {
-    console.log("before save", post);
-    const response = await fetch(`/api/posts/${id}`, {
-      method: "PUT",
+    let info = {
+      url: type === "edit" ? `/api/posts/${id}` : `/api/posts`,
+      method: type === "edit" ? "PUT" : "POST",
+    };
+
+    const response = await fetch(info.url, {
+      method: info.method,
       body: JSON.stringify(post),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
+    const newPost = await response.json();
+
     if (response) {
-      navigate(`/showcase/${id}`);
+      navigate(`/showcase/${newPost._id}`);
     } else {
       setShowErrorDialog(true);
     }

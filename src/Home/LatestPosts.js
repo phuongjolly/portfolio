@@ -12,7 +12,6 @@ export default function LatestPosts() {
     let count = -1;
     if (data) {
       data.map((value, id) => {
-        console.log("check value", value, id);
         if (id % 3 === 0) {
           arr[++count] = [];
         }
@@ -20,7 +19,6 @@ export default function LatestPosts() {
       });
     }
 
-    console.log("group", arr);
     return arr;
   }, [data]);
 
@@ -37,8 +35,11 @@ export default function LatestPosts() {
       </div>
       <div className="h-56 sm:h-96 xl:h-96 2xl:h-96">
         <Carousel slide={false}>
-          {group.map((item) => (
-            <div className={"flex flex-row justify-between gap-4 p-5"}>
+          {group.map((item, id) => (
+            <div
+              key={`item${id}`}
+              className={"flex flex-row justify-between gap-4 p-5"}
+            >
               {item.map((element) => (
                 <ItemBox
                   key={element.title}

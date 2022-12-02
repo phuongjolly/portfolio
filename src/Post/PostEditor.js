@@ -51,6 +51,7 @@ export default function PostEditor({ content, onChangeHandler }) {
             "alignright alignjustify | bullist numlist outdent indent | " +
             "link | " +
             "image | " +
+            "code | " +
             "removeformat | help",
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
