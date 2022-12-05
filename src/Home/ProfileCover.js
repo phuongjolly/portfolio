@@ -5,7 +5,7 @@ export default function ProfileCover() {
   return (
     <div
       className={
-        "profile-cover flex flex-row justify-between gap-5 items-center"
+        "profile-cover flex flex-col justify-between gap-5 items-center px-4 py-8 md:flex-row md:px-14"
       }
     >
       <div className={"flex flex-col"}>

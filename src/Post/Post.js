@@ -29,7 +29,7 @@ export default function Post() {
         <>
           <div
             className={
-              "flex flex-col items-center justify-end relative h-80 max-h-80"
+              "flex flex-col items-center justify-end relative h-40 md:h-80 max-h-80"
             }
             style={{
               backgroundImage: `url(${data.avatar})`,
@@ -47,7 +47,7 @@ export default function Post() {
               {data.description}
             </p>
           </div>
-          <div className={"py-10 px-32"}>
+          <div className={"py-10 px-0  md:px-32"}>
             <div className={"mb-5 flex flex-col"}>{parse(data.content)}</div>
             <div className="flex flex-row gap-4 items-center mt-4">
               <label>Tags: </label>

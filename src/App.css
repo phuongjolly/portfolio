@@ -72,10 +72,10 @@ body {
 }
 
 .App button {
-  padding: 16px 32px;
+  padding: 10px 12px;
   text-align: center;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 19px;
 }
 
@@ -107,5 +107,10 @@ body {
 @media (min-width: 830px) {
   .App {
     padding: 10px;
+  }
+
+  .App button {
+    padding: 16px 32px;
+    font-size: 16px;
   }
 }
