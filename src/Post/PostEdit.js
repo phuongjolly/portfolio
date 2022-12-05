@@ -6,13 +6,11 @@ import PostEditor from "./PostEditor";
 import PostAvatar from "./PostAvatar";
 import "./PostEdit.css";
 
-export default function PostEdit() {
+export default function PostEdit({ type }) {
   const navigate = useNavigate();
   const [showErrorDialog, setShowErrorDialog] = useState(false);
   const { id } = useParams();
-  const { pathname } = useLocation();
-  const type = pathname.split("/")[2];
-  const { data } = useSWR(type === "edit" ? `/api/posts/${id}` : null, {
+  const { data } = useSWR(type === "add" ? null : `/api/posts/${id}`, {
     suspense: true,
     revalidateOnFocus: false,
   });
@@ -64,6 +62,8 @@ export default function PostEdit() {
   if (!post) {
     return <div>loading...</div>;
   }
+
+  console.log("init post", post);
 
   return (
     <div className="post-edit">

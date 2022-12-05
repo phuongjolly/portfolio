@@ -4,21 +4,25 @@ import s3Uploader, { readFile } from "../common/UploadImage";
 
 const defaultAvatarURL =
   "https://phuongjolly-portfolio.s3.amazonaws.com/default-avatar.jpg";
-export default function PostAvatar({ url, handler }) {
+export default function PostAvatar({ url, setUrl, handler }) {
   const [fileData, setFileData] = useState({
     name: "",
     type: "",
-    url: url || defaultAvatarURL,
     data: null,
   });
 
   const fileInput = useRef();
 
+  const setData = (data, url) => {
+    setFileData(data);
+    setUrl(url);
+  };
+
   const onChange = async (e) => {
     e.preventDefault();
     const target = e.target;
     if (target.files && target.files.length > 0) {
-      await readFile(target.files[0], setFileData);
+      await readFile(target.files[0], setData);
 
       const response = await s3Uploader(
         target.files[0],
@@ -37,7 +41,7 @@ export default function PostAvatar({ url, handler }) {
     if (dataTransfer.files.length > 0) {
       const droppedFile = dataTransfer.files[0];
       fileInput.current.files = dataTransfer.files;
-      await readFile(droppedFile, setFileData);
+      await readFile(droppedFile, setData);
 
       const response = await s3Uploader(
         droppedFile,
@@ -55,7 +59,7 @@ export default function PostAvatar({ url, handler }) {
       onDrop={onDrop}
       onDragOver={(e) => e.preventDefault()}
     >
-      <img src={fileData.url} alt={""} className={"w-40"} />
+      <img src={url || defaultAvatarURL} alt={""} className={"w-40"} />
       <input
         type={"file"}
         hidden={true}
