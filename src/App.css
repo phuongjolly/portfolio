@@ -1,7 +1,6 @@
 body {
   background:#EDEDED;
   padding: 10px;
-
 }
 
 .App {
@@ -99,8 +98,9 @@ body {
 }
 
 @media (max-width: 620px) {
-  .App {
-    padding: 5px;
+  body {
+    background-color: #fff;
+    padding: 0;
   }
 }
 

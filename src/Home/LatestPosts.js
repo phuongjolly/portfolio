@@ -20,7 +20,7 @@ export default function LatestPosts() {
           See all demos
         </Link>
       </div>
-      <div className="px-4 py-8 md:px-14">
+      <div className="h-64 px-4 py-8 md:px-14">
         <Carousel slide={true}>
           {data.map((item, id) => (
             <Item key={item._id} data={item} index={id} />
