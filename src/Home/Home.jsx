@@ -8,16 +8,15 @@ export default function Home() {
     <>
       <ProfileCover />
       <Skills
-        data={["React", "NodeJS", "Redux"]}
+        data={["React", "NodeJS", "Redux", "Tailwind CSS", "MongoDB", "OpenGL"]}
         colors={[
-          "greenToBlue",
           "purpleToBlue",
+          "cyanToBlue",
+          "greenToBlue",
+          "purpleToPink",
           "pinkToOrange",
+          "tealToLime",
           "redToYellow",
-          "teal",
-          "lime",
-          "pink",
-          "purple",
         ]}
       />
       <LatestPosts />
