@@ -20,11 +20,13 @@ export default function Post() {
 
   return (
     <div className="post">
-      <PostButtonControl
-        show={currentUser !== null}
-        id={data._id}
-        onDelete={onDelete}
-      />
+      {currentUser && (
+        <PostButtonControl
+          show={Object.keys(currentUser).length !== 0}
+          id={data._id}
+          onDelete={onDelete}
+        />
+      )}
       {data && (
         <>
           <div
