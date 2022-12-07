@@ -67,13 +67,12 @@ body {
 }
 
 .App a{
-  color: #000;
   list-style: none;
   text-decoration: none;
 }
 
 .App a:hover {
-  color: #0d71bb;
+  color: rgb(216, 81, 64);
 }
 
 .App button {

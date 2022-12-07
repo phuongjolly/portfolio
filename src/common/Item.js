@@ -17,16 +17,7 @@ export default function Item({ data, index }) {
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
             {data.title}
           </div>
-          <a
-            href="#"
-            className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
-          >
-            {data.description}
-          </a>
-          <p className="mt-2 text-slate-500">
-            Looking to take your team away on a retreat to enjoy awesome food
-            and take in some sunshine? We have a list of places to do just that.
-          </p>
+          <p className="mt-2 text-slate-500">{data.description}</p>
         </div>
       </div>
     </div>

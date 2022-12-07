@@ -119,3 +119,18 @@
         font-size: 16px;
     }
 }*/
+
+nav {
+    background-color: #F4F0F1;
+}
+
+nav li a:hover {
+    background-color: rgb(216, 81, 64);
+    color: #fff;
+}
+
+@media (min-width: 830px) {
+    nav a {
+        font-size: 16px;
+    }
+}
