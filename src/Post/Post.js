@@ -28,7 +28,7 @@ export default function Post() {
         />
       )}
       {data && (
-        <>
+        <article>
           <div
             className={
               "flex flex-col items-center justify-end relative h-40 md:h-80 max-h-80"
@@ -41,16 +41,18 @@ export default function Post() {
           >
             &nbsp;
           </div>
-          <div className={"flex flex-col p-5"}>
+          <article className={"flex flex-col p-5"}>
             <h1 className="mb-5 flex flex-row justify-center text-2xl">
               {data.title}
             </h1>
             <p className="mb-5 flex flex-row justify-center text-gray-500">
               {data.description}
             </p>
-          </div>
+          </article>
           <div className={"py-10 px-0  md:px-32"}>
-            <div className={"mb-5 flex flex-col"}>{parse(data.content)}</div>
+            <article className={"mb-5 flex flex-col"}>
+              {parse(data.content)}
+            </article>
             <div className="flex flex-row gap-4 items-center mt-4">
               <label>Tags: </label>
               {data.tags &&
@@ -63,7 +65,7 @@ export default function Post() {
                 ))}
             </div>
           </div>
-        </>
+        </article>
       )}
       <div className="flex justify-between w-full mt-4">
         <a className="hover:cursor-pointer">Previous Page</a>
