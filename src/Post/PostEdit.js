@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "flowbite-react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import PostEditor from "./PostEditor";
 import PostAvatar from "./PostAvatar";
@@ -29,7 +29,27 @@ export default function PostEdit({ type }) {
   }, []);
 
   const onChange = (value, type) => {
+    console.log("on change", type, value);
     setPost({ ...post, [type]: value });
+  };
+
+  const onUpload = async (file) => {
+    const generateResponse = await fetch("/api/image/generateUrl", {
+      method: "POST",
+    });
+
+    const { signedUrl, originalUrl } = await generateResponse.json();
+
+    const response = await fetch(`${signedUrl}`, {
+      method: "PUT",
+      body: file,
+    });
+
+    if (response) {
+      return originalUrl;
+    }
+
+    return "";
   };
 
   const onSave = async () => {
@@ -37,6 +57,8 @@ export default function PostEdit({ type }) {
       url: type === "add" ? `/api/posts` : `/api/posts/${id}`,
       method: type === "add" ? "POST" : "PUT",
     };
+
+    console.log("before save", post);
 
     const response = await fetch(info.url, {
       method: info.method,
@@ -84,8 +106,9 @@ export default function PostEdit({ type }) {
         />
       </div>
       <PostAvatar
-        url={post.avatar}
+        postUrl={post.avatar}
         handler={(value) => onChange(value, "avatar")}
+        onUpload={(file) => onUpload(file)}
       />
       <PostEditor
         content={post.content}

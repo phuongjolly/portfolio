@@ -1,7 +1,6 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
 import "./PostEditor.css";
-import s3Uploader from "../common/UploadImage";
 
 export default function PostEditor({ content, onChangeHandler }) {
   const editorRef = useRef();
@@ -9,7 +8,21 @@ export default function PostEditor({ content, onChangeHandler }) {
   const imageUploadHandler = async (blobInfo) => {
     const file = blobInfo.blob();
     const key = blobInfo.filename();
-    return await s3Uploader(file, key, file.type);
+
+    const generateResponse = await fetch("/api/image/generateUrl", {
+      method: "POST",
+    });
+
+    const { signedUrl, originalUrl } = await generateResponse.json();
+
+    const response = await fetch(`${signedUrl}`, {
+      method: "PUT",
+      body: file,
+    });
+
+    if (response) {
+      return originalUrl;
+    }
   };
 
   return (

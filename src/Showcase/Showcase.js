@@ -1,8 +1,5 @@
 import useSWR from "swr";
-import { Button } from "flowbite-react";
 import "./Showcase.css";
-import WrapList from "../common/WrapList";
-import ItemBox from "../common/ItemBox";
 import { useCurrentUser } from "../UserContext";
 import { Link } from "react-router-dom";
 import Item from "../common/Item";

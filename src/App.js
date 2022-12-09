@@ -1,5 +1,5 @@
 import "./App.css";
-import { createContext, Suspense } from "react";
+import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import useSWR from "swr";
 import Home from "./Home/Home";
