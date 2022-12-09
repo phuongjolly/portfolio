@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import "./PostAvatar.css";
-import { useCallback, useEffect, useRef, useState } from "react";
-import s3Uploader, { readFile } from "../common/UploadImage";
+import { readFile } from "../common/UploadImage";
 
 const defaultAvatarURL =
   "https://phuongjolly-portfolio.s3.amazonaws.com/default-avatar.jpg";
@@ -43,9 +43,6 @@ export default function PostAvatar({ postUrl, handler, onUpload }) {
       handler(generatedUrl);
     }
   };
-
-  console.log("check post url", postUrl);
-  console.log("check url ", url);
 
   return (
     <form

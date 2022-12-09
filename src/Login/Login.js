@@ -23,7 +23,6 @@ export default function Login() {
         "Content-Type": "application/json",
       },
     });
-    console.log("current user", currentUser);
 
     if (currentUser) {
       navigate("/");
