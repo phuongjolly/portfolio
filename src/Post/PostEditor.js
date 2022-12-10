@@ -38,6 +38,7 @@ export default function PostEditor({ content, onChangeHandler }) {
         init={{
           height: 500,
           menubar: false,
+          selector: "textarea",
           plugins: [
             "advlist",
             "autolink",
@@ -50,6 +51,7 @@ export default function PostEditor({ content, onChangeHandler }) {
             "searchreplace",
             "visualblocks",
             "code",
+            "codesample",
             "fullscreen",
             "insertdatetime",
             "media",
@@ -65,6 +67,7 @@ export default function PostEditor({ content, onChangeHandler }) {
             "link | " +
             "image | " +
             "code | " +
+            "codesample |" +
             "removeformat | help",
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
