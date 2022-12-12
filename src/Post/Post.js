@@ -1,10 +1,11 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR from "swr";
 import parse from "html-react-parser";
+import Prism from "prismjs";
+
 import "./Post.css";
 import { useCurrentUser } from "../UserContext";
 import PostButtonControl from "./PostButtonControl";
-
 export default function Post() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -17,6 +18,10 @@ export default function Post() {
       navigate("/showcase");
     }
   };
+
+  function highlightCode(element) {
+    Prism.highlightAllUnder(element);
+  }
 
   return (
     <div className="post">
@@ -50,7 +55,7 @@ export default function Post() {
             </p>
           </article>
           <div className={"py-10 px-0  md:px-32"}>
-            <article className={"mb-5 flex flex-col"}>
+            <article className={"mb-5 flex flex-col"} ref={highlightCode}>
               {parse(data.content)}
             </article>
             <div className="flex flex-row gap-4 items-center mt-4">
