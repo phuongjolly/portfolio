@@ -48,7 +48,7 @@ export default function Post() {
           >
             &nbsp;
           </div>
-          <article className={"flex flex-col p-5 prose"}>
+          <article className={"flex flex-col p-5 prose md:max-w-3xl md:m-auto"}>
             <h1 className="mb-5 flex flex-row justify-center text-2xl">
               {data.title}
             </h1>
@@ -56,7 +56,7 @@ export default function Post() {
               {data.description}
             </p>
           </article>
-          <div className={"py-10 px-0  md:px-32"}>
+          <div className={"py-10 px-5 md:max-w-3xl md:m-auto"}>
             <article className={"mb-5 flex flex-col prose"} ref={highlightCode}>
               {parse(data.content)}
             </article>
