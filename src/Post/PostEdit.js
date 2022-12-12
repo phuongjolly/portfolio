@@ -58,8 +58,6 @@ export default function PostEdit({ type }) {
       method: type === "add" ? "POST" : "PUT",
     };
 
-    console.log("before save", post);
-
     const response = await fetch(info.url, {
       method: info.method,
       body: JSON.stringify(post),
@@ -68,9 +66,8 @@ export default function PostEdit({ type }) {
       },
     });
 
-    const newPost = await response.json();
-
     if (response) {
+      const newPost = await response.json();
       navigate(`/showcase/${newPost._id}`);
     } else {
       setShowErrorDialog(true);

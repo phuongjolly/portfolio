@@ -19,9 +19,11 @@ export default function Post() {
     }
   };
 
-  function highlightCode(element) {
-    Prism.highlightAllUnder(element);
-  }
+  const highlightCode = (element) => {
+    if (element) {
+      Prism.highlightAllUnder(element);
+    }
+  };
 
   return (
     <div className="post">
