@@ -114,6 +114,10 @@ body {
 
 }
 
+.App article a {
+  color: #898989;
+}
+
 @media (max-width: 620px) {
   body {
     background-color: #fff;
