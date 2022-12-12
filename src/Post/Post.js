@@ -35,7 +35,7 @@ export default function Post() {
         />
       )}
       {data && (
-        <article>
+        <article className={"prose"}>
           <div
             className={
               "flex flex-col items-center justify-end relative h-40 md:h-80 max-h-80"
@@ -48,7 +48,7 @@ export default function Post() {
           >
             &nbsp;
           </div>
-          <article className={"flex flex-col p-5"}>
+          <article className={"flex flex-col p-5 prose"}>
             <h1 className="mb-5 flex flex-row justify-center text-2xl">
               {data.title}
             </h1>
@@ -57,7 +57,7 @@ export default function Post() {
             </p>
           </article>
           <div className={"py-10 px-0  md:px-32"}>
-            <article className={"mb-5 flex flex-col"} ref={highlightCode}>
+            <article className={"mb-5 flex flex-col prose"} ref={highlightCode}>
               {parse(data.content)}
             </article>
             <div className="flex flex-row gap-4 items-center mt-4">

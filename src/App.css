@@ -102,6 +102,18 @@ body {
   color: #fff;
 }
 
+.App p {
+  line-height: 24px;
+}
+
+.App ul li {
+  line-height: 24px;
+}
+
+.App h2 {
+
+}
+
 @media (max-width: 620px) {
   body {
     background-color: #fff;
