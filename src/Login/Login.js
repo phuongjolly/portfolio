@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal, Button, Label, TextInput, Checkbox } from "flowbite-react";
-import { useNavigate, useLocation } from "react-router-dom";
-import useSWR from "swr";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [show, setShow] = useState(true);

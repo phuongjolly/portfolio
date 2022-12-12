@@ -7,7 +7,7 @@ export default function PostEditor({ content, onChangeHandler }) {
 
   const imageUploadHandler = async (blobInfo) => {
     const file = blobInfo.blob();
-    const key = blobInfo.filename();
+    //const key = blobInfo.filename();
 
     const generateResponse = await fetch("/api/image/generateUrl", {
       method: "POST",

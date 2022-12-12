@@ -1,8 +1,6 @@
 import useSWR from "swr";
 import { Carousel } from "flowbite-react";
-import ItemBox from "../common/ItemBox";
 import "./Home.css";
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import Item from "../common/Item";
 

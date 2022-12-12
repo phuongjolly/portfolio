@@ -75,8 +75,8 @@ export default function Post() {
         </article>
       )}
       <div className="flex justify-between w-full mt-4">
-        <a className="hover:cursor-pointer">Previous Page</a>
-        <a className="hover:cursor-pointer">Next Page</a>
+        <div>Previous Page</div>
+        <div>Next Page</div>
       </div>
     </div>
   );

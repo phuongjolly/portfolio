@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Item({ data, index }) {
+export default function Item({ data }) {
   return (
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <Link to={`/showcase/${data._id}`}>

@@ -8,7 +8,6 @@ import "./PostEdit.css";
 
 export default function PostEdit({ type }) {
   const navigate = useNavigate();
-  const [showErrorDialog, setShowErrorDialog] = useState(false);
   const { id } = useParams();
   const { data } = useSWR(type === "add" ? null : `/api/posts/${id}`, {
     suspense: true,
@@ -26,7 +25,7 @@ export default function PostEdit({ type }) {
     if (type === "edit") {
       setPost(data);
     }
-  }, []);
+  }, [data, type]);
 
   const onChange = (value, type) => {
     console.log("on change", type, value);
@@ -69,8 +68,6 @@ export default function PostEdit({ type }) {
     if (response) {
       const newPost = await response.json();
       navigate(`/showcase/${newPost._id}`);
-    } else {
-      setShowErrorDialog(true);
     }
   };
 
