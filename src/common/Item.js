@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Item({ data }) {
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl w-full">
       <Link to={`/showcase/${data._id}`}>
         <div className="md:flex">
           <div className="md:shrink-0">
