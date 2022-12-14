@@ -110,12 +110,8 @@ body {
   line-height: 24px;
 }
 
-.App h2 {
-
-}
-
 .App article a {
-  color: #898989;
+  color: #61dafb;
 }
 
 @media (max-width: 620px) {
