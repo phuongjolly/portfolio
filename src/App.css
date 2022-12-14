@@ -106,6 +106,10 @@ body {
   line-height: 32px;
 }
 
+.App ul {
+  list-style: none;
+}
+
 .App ul li {
   line-height: 24px;
 }
