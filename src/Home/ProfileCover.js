@@ -1,5 +1,6 @@
 import profileBg from "../assets/profile.svg";
 import profilePicture from "../assets/profile-picture.png";
+import { Link } from "react-router-dom";
 
 export default function ProfileCover() {
   return (
@@ -16,7 +17,9 @@ export default function ProfileCover() {
         </div>
         <div className={"flex flex-row gap-4"}>
           <button className="secondary">Contact Me</button>
-          <button className="primary">Demos</button>
+          <Link to={"/showcase"}>
+            <button className="primary">Demos</button>
+          </Link>
         </div>
       </div>
       <div
