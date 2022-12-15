@@ -75,8 +75,12 @@ export default function Post() {
         </article>
       )}
       <div className="flex justify-between w-full mt-4">
-        <div>Previous Page</div>
-        <div>Next Page</div>
+        <Link to={data.nextId ? `/showcase/${data.nextId}` : ""}>
+          Previous Page
+        </Link>
+        <Link to={data.previousId ? `/showcase/${data.previousId}` : ""}>
+          Next Page
+        </Link>
       </div>
     </div>
   );
