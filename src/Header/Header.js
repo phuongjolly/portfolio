@@ -17,7 +17,9 @@ export default function Header() {
           />
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <button className={"primary hidden md:block"}>Contact Me</button>
+          <a href={"mailto: lephuong06t3@gmail.com"}>
+            <button className={"primary hidden md:block"}>Contact Me</button>
+          </a>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>

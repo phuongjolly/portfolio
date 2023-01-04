@@ -16,7 +16,13 @@ export default function ProfileCover() {
           Full stack developers with more than 3 years of experiences
         </div>
         <div className={"flex flex-row gap-4"}>
-          <button className="secondary">Contact Me</button>
+          <Link
+            onClick={() => {
+              window.location = "mailto: lephuong06t3@gmail.com";
+            }}
+          >
+            <button className="secondary">Contact Me</button>
+          </Link>
           <Link to={"/showcase"}>
             <button className="primary">Demos</button>
           </Link>
