@@ -17,13 +17,14 @@ export default function ProfileCover() {
           as game programmer
         </div>
         <div className={"flex flex-row gap-4"}>
-          <Link
+          <button
             onClick={() => {
               window.location = "mailto: lephuong06t3@gmail.com";
             }}
+            className="secondary"
           >
-            <button className="secondary">Contact Me</button>
-          </Link>
+            Contact Me
+          </button>
           <Link to={"/showcase"}>
             <button className="primary">Demos</button>
           </Link>
