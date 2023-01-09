@@ -13,7 +13,8 @@ export default function ProfileCover() {
         <div className={"hello-text"}>Hi!</div>
         <div className={"hello-text"}>Welcome to My Blog</div>
         <div className="more-info-text">
-          Full stack developers with more than 3 years of experiences
+          More than 3 years working as full stack developer and 5 years working
+          as game programmer
         </div>
         <div className={"flex flex-row gap-4"}>
           <Link

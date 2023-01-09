@@ -10,7 +10,11 @@ export default function Skills({ data, colors }) {
       className={"flex flex-wrap flex-row justify-center gap-2 md:gap-4 py-8"}
     >
       {data.map((item, id) => (
-        <Button className={"text-white"} key={id} gradientDuoTone={colors[id]}>
+        <Button
+          className={"text-white cursor-auto"}
+          key={id}
+          gradientDuoTone={colors[id]}
+        >
           {item}
         </Button>
       ))}
